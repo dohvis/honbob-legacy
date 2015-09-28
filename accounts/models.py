@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager, PermissionsMixin)
 from django.db.models import Q
+from location_field.models.plain import PlainLocationField
 
 class UserManager(BaseUserManager):
 
@@ -32,7 +33,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.CharField(max_length=64, null=True)
     name = models.CharField(max_length=64, null=True)
     gender = models.CharField(max_length=16, null=True)
-    
+    location =  PlainLocationField(zoom=16,default='Point(1.0 1.0)')
+
     objects = UserManager()
     profile = None
     
