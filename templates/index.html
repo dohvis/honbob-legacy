@@ -53,10 +53,11 @@ function initialize() {
         var bounds = map.getBounds();
         var ne = bounds.getNorthEast(); // LatLng of the north-east corner
         var sw = bounds.getSouthWest(); // LatLng of the south-west corder
-        var min_x = sw.L;
-        var max_x = ne.L;
-        var max_y = ne.H;
-        var min_y = sw.L;
+        var min_x = sw.lng();
+        var max_x = ne.lng();
+        var max_y = ne.lat();
+        var min_y = sw.lat();
+        console.log(bounds.getNorthEast());
         $.get("/restaurant/list/", {
                 "min_x": min_x,
                 "min_y": min_y,
